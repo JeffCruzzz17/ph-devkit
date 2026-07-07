@@ -9,30 +9,39 @@
 - [x] Add website playground scaffold
 - [x] Add Laravel and .NET example folders
 - [x] Add launch assets draft
+- [x] Initialize Git repository
+- [x] Add package lockfile
 
 ## Phase 1 - MVP build
 
-- [ ] Finish `formatPeso` examples
-- [ ] Finish `validatePHMobile` examples
-- [ ] Build `PHAddressSelector`
-- [ ] Build website landing page
-- [ ] Build live playground
-- [ ] Add docs pages
-- [ ] Add Laravel validation example
-- [ ] Add .NET validation example
-- [ ] Add SQL schema examples
-- [ ] Add responsive styling
+- [x] Finish `formatPeso` examples
+- [x] Finish `validatePHMobile` examples
+- [x] Build `PHAddressSelector`
+- [x] Build website landing page
+- [x] Build live playground
+- [x] Add docs pages
+- [x] Add Laravel validation example
+- [x] Add .NET validation example
+- [x] Add SQL schema examples
+- [x] Add responsive styling
+- [x] Add package tests
+- [x] Add React component tests
+- [x] Add CI validation workflow
+- [x] Upgrade Vite toolchain
+- [x] Clear npm audit findings
 - [ ] Deploy website
 
 ## Phase 2 - Pre-launch polish
 
+- [ ] Push public GitHub repo
 - [ ] Add 4-5 screenshots
 - [ ] Add demo GIF or short video
-- [ ] Create tester post
+- [x] Create tester post
 - [ ] Ask 5-10 developers for feedback
 - [ ] Improve docs based on feedback
 - [ ] Add GitHub README badges
-- [ ] Add changelog
+- [x] Add changelog
+- [ ] Final browser and mobile QA
 
 ## Phase 3 - App Builders PH launch
 

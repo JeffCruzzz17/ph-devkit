@@ -2,6 +2,8 @@
 
 Reusable components, utilities, and starter modules for building Philippine-ready web applications faster.
 
+PH DevKit helps Filipino developers ship local-ready apps faster with reusable React components, TypeScript utilities, backend examples, SQL schema patterns, and practical documentation for Philippine web applications.
+
 ## What is included in the MVP?
 
 - `@ph-devkit/core` - TypeScript utilities
@@ -9,9 +11,10 @@ Reusable components, utilities, and starter modules for building Philippine-read
   - Philippine mobile number validator and normalizer
 - `@ph-devkit/react` - React components
   - Philippine address selector
-- `website` - Vite + React product site and playground
+- `website` - Vite + React product site and live playground
 - `examples` - Laravel and .NET Web API examples
 - `docs` - Installation and usage guides
+- `data` - Small sample PSGC-style address dataset for demos
 
 ## Monorepo structure
 
@@ -36,16 +39,50 @@ ph-devkit/
 
 ## Getting started
 
+Install dependencies from the lockfile:
+
 ```bash
-npm install
+npm ci
+```
+
+Run the full local quality gate:
+
+```bash
+npm run test
+npm run typecheck
 npm run build
+npm audit
+```
+
+Start the website playground:
+
+```bash
 npm run dev
 ```
 
-The default dev command starts the website playground.
+The default dev command starts the Vite website playground.
 
 ```bash
 npm run dev --workspace website
+```
+
+## Quality checks
+
+PH DevKit currently uses:
+
+- Vitest for package tests
+- React Testing Library for component tests
+- TypeScript strict mode
+- Vite production build validation
+- npm audit for dependency security checks
+
+Run everything before submitting changes:
+
+```bash
+npm run test
+npm run typecheck
+npm run build
+npm audit
 ```
 
 ## Packages
@@ -56,6 +93,8 @@ npm run dev --workspace website
 import { formatPeso, validatePHMobile } from '@ph-devkit/core';
 
 formatPeso(1500); // "PHP 1,500.00"
+formatPeso(1500, { symbol: true }); // "₱1,500.00"
+
 validatePHMobile('09171234567');
 ```
 

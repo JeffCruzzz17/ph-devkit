@@ -10,17 +10,40 @@ Launch PH DevKit on App Builders PH as a useful Developer Tools product for Fili
 
 It includes reusable React components, TypeScript utilities, backend validation examples, SQL schema patterns, and documentation for common Philippine app requirements.
 
+## Current MVP quality gate
+
+The project should pass these commands before launch:
+
+```bash
+npm ci
+npm run test
+npm run typecheck
+npm run build
+npm audit
+```
+
+Current local status:
+
+- Tests passing
+- Typecheck passing
+- Production build passing
+- npm audit clean
+- Vite website builds successfully
+- Playground runs locally
+
 ## Pre-launch checklist
 
 - [ ] Live website deployed
-- [ ] Component playground works
+- [x] Component playground works locally
 - [ ] GitHub repo is public
-- [ ] README is clear
-- [ ] Docs pages are complete enough for MVP
+- [x] README is clear
+- [x] Docs pages are complete enough for MVP
 - [ ] Screenshots prepared
-- [ ] App Builders PH listing finalized
-- [ ] Tester post drafted
+- [x] App Builders PH listing finalized as draft
+- [x] Tester post drafted
 - [ ] 5-10 developers invited to test
+- [ ] Final mobile QA completed
+- [ ] Final App Builders PH submission copy reviewed
 
 ## Tester request draft
 
@@ -36,17 +59,34 @@ The MVP includes:
 - SQL schema examples
 - Live component playground
 
+The local quality gate is already passing:
+
+- Tests
+- Typecheck
+- Production build
+- npm audit
+
 I am looking for feedback from developers building SaaS apps, dashboards, booking systems, directories, or business tools for the Philippine market.
 
 What reusable building block would save you the most time in your next app?
 
 ## Launch day post
 
-Hey builders, I am Jeff. I built **PH DevKit** because many Philippine apps need the same basics: address forms, peso formatting, mobile validation, auth/RBAC patterns, audit logs, and clean API examples.
+Hey builders, I am Jeff. I built **PH DevKit** because many Philippine apps need the same basics: address forms, peso formatting, mobile validation, backend validation examples, and SQL schema patterns.
 
-I am starting with React components, TypeScript utilities, Laravel examples, .NET examples, and SQL schema patterns.
+I am starting with React components, TypeScript utilities, Laravel examples, .NET examples, SQL schema patterns, and a live playground.
 
-I would love feedback from Filipino makers: what reusable component or backend module would save you the most time in your next app?
+The MVP currently includes:
+
+- Philippine address selector
+- Peso formatter
+- PH mobile validator
+- Laravel validation examples
+- .NET Web API examples
+- SQL schema examples
+- Local test/build/audit quality gate
+
+I would love feedback from Filipino makers: what reusable component, utility, or backend module would save you the most time in your next app?
 
 ## First 7 days after launch
 
@@ -94,3 +134,11 @@ I would love feedback from Filipino makers: what reusable component or backend m
 - First month: 40-60 upvotes
 - Comments: 5+ useful comments
 - Reviews: 1-2 after real usage
+
+## Immediate next steps
+
+1. Push repository to GitHub.
+2. Deploy website.
+3. Capture 4-5 screenshots.
+4. Invite 5-10 Filipino developers to test.
+5. Submit PH DevKit to App Builders PH.
