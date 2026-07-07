@@ -12,10 +12,17 @@
     "build": "npm run build:packages && npm run build --workspace website",
     "build:packages": "npm run build --workspace @ph-devkit/core && npm run build --workspace @ph-devkit/react",
     "typecheck": "npm run typecheck --workspace website && npm run typecheck --workspace @ph-devkit/core && npm run typecheck --workspace @ph-devkit/react",
-    "preview": "npm run preview --workspace website"
+    "preview": "npm run preview --workspace website",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20.17.6",
+    "jsdom": "^29.1.1",
     "typescript": "^5.6.3",
-    "@types/node": "^20.17.6"
+    "vitest": "^4.1.10"
   }
 }

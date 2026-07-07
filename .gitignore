@@ -11,3 +11,7 @@ coverage/
 bin/
 obj/
 vendor/
+
+# Test/debug output
+vitest-output.txt
+*-test-output.txt
