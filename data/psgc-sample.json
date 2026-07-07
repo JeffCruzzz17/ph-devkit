@@ -1,0 +1,25 @@
+{
+  "note": "Demo data only. Replace with a complete, verified PSGC dataset before production use.",
+  "regions": [
+    {
+      "code": "NCR",
+      "name": "National Capital Region",
+      "provinces": [
+        {
+          "code": "NCR-METRO-MANILA",
+          "name": "Metro Manila",
+          "cities": [
+            {
+              "code": "QC",
+              "name": "Quezon City",
+              "barangays": [
+                { "code": "QC-001", "name": "Commonwealth" },
+                { "code": "QC-002", "name": "Batasan Hills" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

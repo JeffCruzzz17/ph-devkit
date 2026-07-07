@@ -1,0 +1,21 @@
+{
+  "name": "ph-devkit-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "website",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace website",
+    "build": "npm run build:packages && npm run build --workspace website",
+    "build:packages": "npm run build --workspace @ph-devkit/core && npm run build --workspace @ph-devkit/react",
+    "typecheck": "npm run typecheck --workspace website && npm run typecheck --workspace @ph-devkit/core && npm run typecheck --workspace @ph-devkit/react",
+    "preview": "npm run preview --workspace website"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.17.6"
+  }
+}
