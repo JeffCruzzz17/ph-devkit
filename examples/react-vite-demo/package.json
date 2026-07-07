@@ -11,7 +11,7 @@
     "@ph-devkit/core": "0.1.0",
     "@ph-devkit/react": "0.1.0",
     "@vitejs/plugin-react": "^4.3.2",
-    "vite": "^5.4.10",
+    "vite": "^8.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
