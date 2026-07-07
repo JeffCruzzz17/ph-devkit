@@ -22,6 +22,10 @@ npm run build
 npm audit
 ```
 
+Live demo:
+
+https://ph-devkit-website.vercel.app/
+
 Current local status:
 
 - Tests passing
@@ -33,9 +37,9 @@ Current local status:
 
 ## Pre-launch checklist
 
-- [ ] Live website deployed
+- [x] Live website deployed
 - [x] Component playground works locally
-- [ ] GitHub repo is public
+- [x] GitHub repo is public
 - [x] README is clear
 - [x] Docs pages are complete enough for MVP
 - [ ] Screenshots prepared
@@ -142,3 +146,4 @@ I would love feedback from Filipino makers: what reusable component, utility, or
 3. Capture 4-5 screenshots.
 4. Invite 5-10 Filipino developers to test.
 5. Submit PH DevKit to App Builders PH.
+

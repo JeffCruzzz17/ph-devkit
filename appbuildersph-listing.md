@@ -39,6 +39,10 @@ Free
 
 Web
 
+## Live demo
+
+https://ph-devkit-website.vercel.app/
+
 ## Short description
 
 PH DevKit helps Filipino developers ship local-ready apps faster with reusable React components, TypeScript utilities, Laravel and .NET examples, SQL patterns, and practical documentation.
@@ -66,3 +70,4 @@ I would love feedback from Filipino makers: what reusable component or backend m
 3. Code snippets: React + TypeScript utility usage
 4. Backend examples: Laravel and .NET validation examples
 5. Docs/GitHub page: Installation and roadmap
+

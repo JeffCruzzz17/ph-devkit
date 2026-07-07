@@ -4,6 +4,10 @@ Reusable components, utilities, and starter modules for building Philippine-read
 
 PH DevKit helps Filipino developers ship local-ready apps faster with reusable React components, TypeScript utilities, backend examples, SQL schema patterns, and practical documentation for Philippine web applications.
 
+## Live demo
+
+https://ph-devkit-website.vercel.app/
+
 ## What is included in the MVP?
 
 - `@ph-devkit/core` - TypeScript utilities
@@ -111,3 +115,4 @@ The address dataset in this repo is a small sample for demos only. Replace it wi
 ## Launch goal
 
 Submit PH DevKit to App Builders PH under **Developer Tools** as a free toolkit for Filipino developers and makers.
+

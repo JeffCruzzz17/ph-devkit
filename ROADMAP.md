@@ -29,11 +29,11 @@
 - [x] Add CI validation workflow
 - [x] Upgrade Vite toolchain
 - [x] Clear npm audit findings
-- [ ] Deploy website
+- [x] Deploy website
 
 ## Phase 2 - Pre-launch polish
 
-- [ ] Push public GitHub repo
+- [x] Push public GitHub repo
 - [ ] Add 4-5 screenshots
 - [ ] Add demo GIF or short video
 - [x] Create tester post
@@ -64,3 +64,4 @@
 - [ ] Holiday lookup utility
 - [ ] Invoice number utility
 - [ ] Deployment templates
+
