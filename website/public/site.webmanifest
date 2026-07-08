@@ -1,0 +1,16 @@
+{
+  "name": "PH DevKit",
+  "short_name": "PH DevKit",
+  "description": "Local-ready developer tools for Philippine web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbf7",
+  "theme_color": "#0f4227",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}

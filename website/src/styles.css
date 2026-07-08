@@ -1260,3 +1260,32 @@ select:focus {
     max-width: none;
   }
 }
+
+/* Launch polish */
+
+.code-example-header {
+  align-items: flex-start;
+}
+
+.code-example-header > div {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.code-copy-button {
+  flex: 0 0 auto;
+  border: 1px solid rgba(15, 66, 39, 0.16);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f4227;
+  cursor: pointer;
+  padding: 0.38rem 0.72rem;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.code-copy-button:hover {
+  border-color: rgba(22, 163, 74, 0.35);
+  background: #f0fdf4;
+}

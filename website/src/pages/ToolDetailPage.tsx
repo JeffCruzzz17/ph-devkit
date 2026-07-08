@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { getRelatedTools, getToolDetailBySlug } from '../data/toolDetails';
 import type { DeveloperTool } from '../data/developerTools';
 
@@ -18,6 +19,31 @@ export function getToolSlugFromPath(pathname: string): string | null {
 
 function getStatusClassName(status: DeveloperTool['status']): string {
   return `tool-status tool-status-${status}`;
+}
+
+type CopySnippetButtonProps = {
+  code: string;
+};
+
+function CopySnippetButton({ code }: CopySnippetButtonProps) {
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle');
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopyState('copied');
+      window.setTimeout(() => setCopyState('idle'), 1800);
+    } catch {
+      setCopyState('failed');
+      window.setTimeout(() => setCopyState('idle'), 1800);
+    }
+  }
+
+  return (
+    <button className="code-copy-button" type="button" onClick={handleCopy}>
+      {copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Copy failed' : 'Copy'}
+    </button>
+  );
 }
 
 type ToolDetailPageProps = {
@@ -121,8 +147,11 @@ export function ToolDetailPage({ slug }: ToolDetailPageProps) {
           {detail.codeExamples.map((example) => (
             <article className="code-example-card" key={example.title}>
               <div className="code-example-header">
-                <h3>{example.title}</h3>
-                <span>{example.language}</span>
+                <div>
+                  <h3>{example.title}</h3>
+                  <span>{example.language}</span>
+                </div>
+                <CopySnippetButton code={example.code} />
               </div>
               <pre>
                 <code>{example.code}</code>
