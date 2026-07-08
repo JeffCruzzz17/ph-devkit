@@ -4,7 +4,6 @@
     "jsx": "react-jsx",
     "noEmit": true,
     "moduleResolution": "Bundler",
-    "baseUrl": ".",
     "paths": {
       "@ph-devkit/core": ["../packages/core/src/index.ts"],
       "@ph-devkit/react": ["../packages/react/src/index.ts"]
