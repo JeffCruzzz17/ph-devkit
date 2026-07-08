@@ -1,47 +1,48 @@
-import { useMemo, useState, type ChangeEvent } from 'react';
-import { formatPeso, validatePHMobile } from '@ph-devkit/core';
-import { PHAddressSelector, type PHAddressValue } from '@ph-devkit/react';
-import { sampleRegions } from './data/sampleAddressData';
-import { ToolsDirectory } from './components/ToolsDirectory';
+import { useMemo, useState, type ChangeEvent } from "react";
+import { formatPeso, validatePHMobile } from "@ph-devkit/core";
+import { PHAddressSelector, type PHAddressValue } from "@ph-devkit/react";
+import { sampleRegions } from "./data/sampleAddressData";
+import { ToolsDirectory } from "./components/ToolsDirectory";
+import { ToolDetailPage, getToolSlugFromPath } from "./pages/ToolDetailPage";
 
 const toolkitStats = [
-  { label: 'MVP utilities', value: '3' },
-  { label: 'Backend examples', value: '2' },
-  { label: 'Target stack', value: 'React + TS' }
+  { label: "MVP utilities", value: "3" },
+  { label: "Backend examples", value: "2" },
+  { label: "Target stack", value: "React + TS" },
 ] as const;
 
 const featureCards = [
   {
-    eyebrow: 'Forms',
-    title: 'PH Address Selector',
+    eyebrow: "Forms",
+    title: "PH Address Selector",
     description:
-      'Cascading region, province, city or municipality, and barangay fields for local onboarding and checkout forms.'
+      "Cascading region, province, city or municipality, and barangay fields for local onboarding and checkout forms.",
   },
   {
-    eyebrow: 'Money',
-    title: 'Peso Formatter',
+    eyebrow: "Money",
+    title: "Peso Formatter",
     description:
-      'A small TypeScript utility for consistent Philippine peso display in dashboards, invoices, and admin tools.'
+      "A small TypeScript utility for consistent Philippine peso display in dashboards, invoices, and admin tools.",
   },
   {
-    eyebrow: 'Auth and CRM',
-    title: 'Mobile Validator',
+    eyebrow: "Auth and CRM",
+    title: "Mobile Validator",
     description:
-      'Normalize common PH mobile number formats before signup, lead capture, support, or notification flows.'
-  }
+      "Normalize common PH mobile number formats before signup, lead capture, support, or notification flows.",
+  },
 ] as const;
 
 const stackItems = [
-  'React + TypeScript components',
-  '.NET Web API examples',
-  'Laravel API examples',
-  'SQL schema starter patterns'
+  "React + TypeScript components",
+  ".NET Web API examples",
+  "Laravel API examples",
+  "SQL schema starter patterns",
 ] as const;
 
 const playgroundNotes = [
-  'Uses sample PSGC-like demo data only.',
-  'Keeps copied code small and readable.',
-  'Designed for App Builders PH launch feedback.'
+  "Uses sample PSGC-like demo data only.",
+  "Keeps copied code small and readable.",
+  "Designed for App Builders PH launch feedback.",
 ] as const;
 
 const starterCode = `import { formatPeso, validatePHMobile } from '@ph-devkit/core';
@@ -51,38 +52,52 @@ formatPeso(1500, { symbol: true });
 validatePHMobile('0917 123 4567');`;
 
 function parsePesoInput(amount: string) {
-  const normalized = amount.trim().replace(/,/g, '');
+  const normalized = amount.trim().replace(/,/g, "");
 
   if (normalized.length === 0) {
-    return { isValid: false, message: 'Enter an amount to preview peso formatting.' } as const;
+    return {
+      isValid: false,
+      message: "Enter an amount to preview peso formatting.",
+    } as const;
   }
 
   const parsed = Number(normalized);
 
   if (!Number.isFinite(parsed)) {
-    return { isValid: false, message: 'Enter a valid number, such as 1500 or 1,500.50.' } as const;
+    return {
+      isValid: false,
+      message: "Enter a valid number, such as 1500 or 1,500.50.",
+    } as const;
   }
 
   return {
     isValid: true,
     symbol: formatPeso(parsed, { symbol: true }),
-    code: formatPeso(parsed)
+    code: formatPeso(parsed),
   } as const;
 }
 
 export function App() {
-  const [amount, setAmount] = useState('1500');
-  const [mobile, setMobile] = useState('0917 123 4567');
+  const [amount, setAmount] = useState("1500");
+  const [mobile, setMobile] = useState("0917 123 4567");
   const [address, setAddress] = useState<PHAddressValue>({});
 
   const pesoPreview = useMemo(() => parsePesoInput(amount), [amount]);
   const mobileResult = useMemo(() => validatePHMobile(mobile), [mobile]);
 
   const selectedAddress = useMemo(() => {
-    const region = sampleRegions.find((item) => item.code === address.regionCode);
-    const province = region?.provinces.find((item) => item.code === address.provinceCode);
-    const city = province?.cities.find((item) => item.code === address.cityCode);
-    const barangay = city?.barangays.find((item) => item.code === address.barangayCode);
+    const region = sampleRegions.find(
+      (item) => item.code === address.regionCode,
+    );
+    const province = region?.provinces.find(
+      (item) => item.code === address.provinceCode,
+    );
+    const city = province?.cities.find(
+      (item) => item.code === address.cityCode,
+    );
+    const barangay = city?.barangays.find(
+      (item) => item.code === address.barangayCode,
+    );
 
     return { region, province, city, barangay };
   }, [address]);
@@ -91,7 +106,7 @@ export function App() {
     selectedAddress.region?.name,
     selectedAddress.province?.name,
     selectedAddress.city?.name,
-    selectedAddress.barangay?.name
+    selectedAddress.barangay?.name,
   ].filter(Boolean);
 
   const addressOutput = {
@@ -100,8 +115,8 @@ export function App() {
       region: selectedAddress.region?.name ?? null,
       province: selectedAddress.province?.name ?? null,
       city: selectedAddress.city?.name ?? null,
-      barangay: selectedAddress.barangay?.name ?? null
-    }
+      barangay: selectedAddress.barangay?.name ?? null,
+    },
   };
 
   function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
@@ -112,13 +127,25 @@ export function App() {
     setMobile(event.target.value);
   }
 
+  const activeToolSlug = getToolSlugFromPath(
+    typeof window === "undefined" ? "/" : window.location.pathname,
+  );
+
+  if (activeToolSlug) {
+    return <ToolDetailPage slug={activeToolSlug} />;
+  }
+
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
 
       <header className="site-header" aria-label="PH DevKit header">
         <a className="brand" href="#top" aria-label="PH DevKit home">
-          <span className="brand-mark" aria-hidden="true">PH</span>
+          <span className="brand-mark" aria-hidden="true">
+            PH
+          </span>
           <span>
             <strong>PH DevKit</strong>
             <small>Local-ready developer tools</small>
@@ -139,13 +166,18 @@ export function App() {
             <div className="badge">Developer Tools for Filipino Makers</div>
             <h1 id="hero-title">Build Philippine-ready apps faster.</h1>
             <p>
-              PH DevKit gives Filipino developers reusable components, TypeScript utilities,
-              backend examples, and starter SQL patterns for local-market web applications.
+              PH DevKit gives Filipino developers reusable components,
+              TypeScript utilities, backend examples, and starter SQL patterns
+              for local-market web applications.
             </p>
 
             <div className="hero-actions" aria-label="Primary calls to action">
-              <a href="#playground" className="button primary">Try the playground</a>
-              <a href="#install" className="button secondary">Copy starter snippet</a>
+              <a href="#playground" className="button primary">
+                Try the playground
+              </a>
+              <a href="#install" className="button secondary">
+                Copy starter snippet
+              </a>
             </div>
 
             <dl className="stat-strip" aria-label="PH DevKit MVP summary">
@@ -158,7 +190,10 @@ export function App() {
             </dl>
           </div>
 
-          <aside className="hero-panel" aria-label="PH DevKit launch scope preview">
+          <aside
+            className="hero-panel"
+            aria-label="PH DevKit launch scope preview"
+          >
             <div className="panel-topline">
               <span className="status-dot" aria-hidden="true" />
               MVP launch scope
@@ -169,19 +204,28 @@ export function App() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <pre className="mini-code" aria-label="Example PH DevKit usage"><code>{starterCode}</code></pre>
+            <pre className="mini-code" aria-label="Example PH DevKit usage">
+              <code>{starterCode}</code>
+            </pre>
           </aside>
         </section>
 
-        <section id="components" className="section-block" aria-labelledby="components-title">
+        <section
+          id="components"
+          className="section-block"
+          aria-labelledby="components-title"
+        >
           <div className="section-header">
             <div>
               <span className="eyebrow">MVP toolkit</span>
-              <h2 id="components-title">Start with the Philippine app basics.</h2>
+              <h2 id="components-title">
+                Start with the Philippine app basics.
+              </h2>
             </div>
             <p>
-              The first release focuses on frequent local requirements that slow down forms,
-              billing displays, registration flows, and backend examples.
+              The first release focuses on frequent local requirements that slow
+              down forms, billing displays, registration flows, and backend
+              examples.
             </p>
           </div>
 
@@ -198,17 +242,19 @@ export function App() {
 
         <ToolsDirectory />
 
-        
-
-        <section id="playground" className="section-block playground" aria-labelledby="playground-title">
+        <section
+          id="playground"
+          className="section-block playground"
+          aria-labelledby="playground-title"
+        >
           <div className="section-header">
             <div>
               <span className="eyebrow">Live Playground</span>
               <h2 id="playground-title">Test the MVP components.</h2>
             </div>
             <p>
-              These examples are intentionally compact so builders can inspect, copy,
-              and adapt the implementation quickly.
+              These examples are intentionally compact so builders can inspect,
+              copy, and adapt the implementation quickly.
             </p>
           </div>
 
@@ -232,13 +278,16 @@ export function App() {
               <div className="selection-preview" aria-live="polite">
                 <span className="preview-label">Selected address</span>
                 {selectedAddressPath.length > 0 ? (
-                  <p>{selectedAddressPath.join(' / ')}</p>
+                  <p>{selectedAddressPath.join(" / ")}</p>
                 ) : (
                   <p>Choose a region to start the cascading selector.</p>
                 )}
               </div>
 
-              <pre className="json-output" aria-label="Selected address JSON output">
+              <pre
+                className="json-output"
+                aria-label="Selected address JSON output"
+              >
                 {JSON.stringify(addressOutput, null, 2)}
               </pre>
             </article>
@@ -253,7 +302,9 @@ export function App() {
                   <span className="pill">Core</span>
                 </div>
 
-                <label className="input-label" htmlFor="amount">Amount</label>
+                <label className="input-label" htmlFor="amount">
+                  Amount
+                </label>
                 <input
                   id="amount"
                   value={amount}
@@ -262,7 +313,14 @@ export function App() {
                   placeholder="1500"
                 />
 
-                <div className={pesoPreview.isValid ? 'result-box success' : 'result-box error'} role="status">
+                <div
+                  className={
+                    pesoPreview.isValid
+                      ? "result-box success"
+                      : "result-box error"
+                  }
+                  role="status"
+                >
                   {pesoPreview.isValid ? (
                     <>
                       <strong>{pesoPreview.symbol}</strong>
@@ -283,7 +341,9 @@ export function App() {
                   <span className="pill">Core</span>
                 </div>
 
-                <label className="input-label" htmlFor="mobile">Mobile number</label>
+                <label className="input-label" htmlFor="mobile">
+                  Mobile number
+                </label>
                 <input
                   id="mobile"
                   value={mobile}
@@ -292,7 +352,14 @@ export function App() {
                   placeholder="09171234567"
                 />
 
-                <div className={mobileResult.isValid ? 'result-box success' : 'result-box error'} role="status">
+                <div
+                  className={
+                    mobileResult.isValid
+                      ? "result-box success"
+                      : "result-box error"
+                  }
+                  role="status"
+                >
                   {mobileResult.isValid ? (
                     <>
                       <strong>Valid PH mobile</strong>
@@ -316,7 +383,11 @@ export function App() {
           </div>
         </section>
 
-        <section id="install" className="section-block code-section" aria-labelledby="install-title">
+        <section
+          id="install"
+          className="section-block code-section"
+          aria-labelledby="install-title"
+        >
           <div>
             <span className="eyebrow">Copy-paste starter</span>
             <h2 id="install-title">Use PH DevKit in a React project.</h2>
@@ -325,9 +396,11 @@ export function App() {
               add the React package, then wire the selector to your form state.
             </p>
           </div>
-          <pre className="code-output" aria-label="PH DevKit starter code"><code>{`npm install @ph-devkit/core @ph-devkit/react
+          <pre className="code-output" aria-label="PH DevKit starter code">
+            <code>{`npm install @ph-devkit/core @ph-devkit/react
 
-${starterCode}`}</code></pre>
+${starterCode}`}</code>
+          </pre>
         </section>
       </main>
 
@@ -338,4 +411,3 @@ ${starterCode}`}</code></pre>
     </>
   );
 }
-

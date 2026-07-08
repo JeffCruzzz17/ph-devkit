@@ -6,14 +6,17 @@ export type DeveloperToolKind =
   | 'Backend Example'
   | 'Database Pattern';
 
+export type ToolHref = `/${string}` | `#${string}`;
+
 export type DeveloperToolAction = {
   label: string;
-  href: `#${string}`;
+  href: ToolHref;
   ariaLabel: string;
 };
 
 export type DeveloperTool = {
   id: string;
+  slug: string;
   title: string;
   description: string;
   kind: DeveloperToolKind;
@@ -28,6 +31,7 @@ export type DeveloperTool = {
 export const developerTools = [
   {
     id: 'peso-formatter',
+    slug: 'peso-formatter',
     title: 'Peso Formatter',
     description:
       'Format Philippine peso amounts consistently for invoices, checkouts, dashboards, admin screens, and reporting views.',
@@ -37,18 +41,19 @@ export const developerTools = [
     stack: ['TypeScript', 'Core package'],
     highlights: ['PHP code format', 'Peso symbol format', 'Decimal control'],
     primaryAction: {
-      label: 'Try formatter',
-      href: '#playground',
-      ariaLabel: 'Open Peso Formatter tool'
+      label: 'Open tool',
+      href: '/tools/peso-formatter',
+      ariaLabel: 'Open Peso Formatter tool page'
     },
     secondaryAction: {
-      label: 'Copy snippet',
-      href: '#install',
-      ariaLabel: 'View Peso Formatter install snippet'
+      label: 'Try demo',
+      href: '#playground',
+      ariaLabel: 'Try Peso Formatter in the playground'
     }
   },
   {
     id: 'ph-mobile-validator',
+    slug: 'ph-mobile-validator',
     title: 'PH Mobile Validator',
     description:
       'Validate and normalize Philippine mobile numbers for signups, CRM records, support flows, and notification systems.',
@@ -58,18 +63,19 @@ export const developerTools = [
     stack: ['TypeScript', 'Core package'],
     highlights: ['09xx support', '+63 support', 'Normalized output'],
     primaryAction: {
-      label: 'Try validator',
-      href: '#playground',
-      ariaLabel: 'Open PH Mobile Validator tool'
+      label: 'Open tool',
+      href: '/tools/ph-mobile-validator',
+      ariaLabel: 'Open PH Mobile Validator tool page'
     },
     secondaryAction: {
-      label: 'Copy snippet',
-      href: '#install',
-      ariaLabel: 'View PH Mobile Validator install snippet'
+      label: 'Try demo',
+      href: '#playground',
+      ariaLabel: 'Try PH Mobile Validator in the playground'
     }
   },
   {
     id: 'ph-address-selector',
+    slug: 'ph-address-selector',
     title: 'PH Address Selector',
     description:
       'Drop a cascading Region, Province, City or Municipality, and Barangay selector into local-ready React forms.',
@@ -79,18 +85,19 @@ export const developerTools = [
     stack: ['React', 'TypeScript'],
     highlights: ['Controlled value', 'Cascading selects', 'Sample PSGC-style data'],
     primaryAction: {
-      label: 'Try selector',
-      href: '#playground',
-      ariaLabel: 'Open PH Address Selector tool'
+      label: 'Open tool',
+      href: '/tools/ph-address-selector',
+      ariaLabel: 'Open PH Address Selector tool page'
     },
     secondaryAction: {
-      label: 'View usage',
-      href: '#install',
-      ariaLabel: 'View PH Address Selector usage snippet'
+      label: 'Try demo',
+      href: '#playground',
+      ariaLabel: 'Try PH Address Selector in the playground'
     }
   },
   {
     id: 'laravel-validation-examples',
+    slug: 'laravel-validation-examples',
     title: 'Laravel Validation Examples',
     description:
       'Copy backend validation patterns for Philippine mobile numbers and local app request payloads in Laravel APIs.',
@@ -100,18 +107,19 @@ export const developerTools = [
     stack: ['Laravel', 'PHP'],
     highlights: ['Request validation', 'Reusable rule class', 'API controller sample'],
     primaryAction: {
-      label: 'View example',
-      href: '#install',
-      ariaLabel: 'Open Laravel Validation Examples'
+      label: 'Open example',
+      href: '/tools/laravel-validation-examples',
+      ariaLabel: 'Open Laravel Validation Examples tool page'
     },
     secondaryAction: {
-      label: 'See roadmap',
-      href: '#components',
-      ariaLabel: 'View Laravel examples roadmap context'
+      label: 'View install',
+      href: '#install',
+      ariaLabel: 'View Laravel examples install section'
     }
   },
   {
     id: 'dotnet-web-api-examples',
+    slug: 'dotnet-web-api-examples',
     title: '.NET Web API Examples',
     description:
       'Use ASP.NET Core validation examples for local customer registration, mobile number validation, and API contracts.',
@@ -121,18 +129,19 @@ export const developerTools = [
     stack: ['.NET', 'C#'],
     highlights: ['Validation attribute', 'Request model', 'Controller sample'],
     primaryAction: {
-      label: 'View example',
-      href: '#install',
-      ariaLabel: 'Open .NET Web API Examples'
+      label: 'Open example',
+      href: '/tools/dotnet-web-api-examples',
+      ariaLabel: 'Open .NET Web API Examples tool page'
     },
     secondaryAction: {
-      label: 'See roadmap',
-      href: '#components',
-      ariaLabel: 'View .NET examples roadmap context'
+      label: 'View install',
+      href: '#install',
+      ariaLabel: 'View .NET examples install section'
     }
   },
   {
     id: 'sql-schema-starters',
+    slug: 'sql-schema-starters',
     title: 'SQL Schema Starters',
     description:
       'Start faster with database patterns for users, customer profiles, addresses, and audit-ready local business systems.',
@@ -142,14 +151,14 @@ export const developerTools = [
     stack: ['SQL', 'Database design'],
     highlights: ['Address tables', 'User profile fields', 'Audit-friendly patterns'],
     primaryAction: {
-      label: 'View schema',
-      href: '#install',
-      ariaLabel: 'Open SQL Schema Starters'
+      label: 'Open schema',
+      href: '/tools/sql-schema-starters',
+      ariaLabel: 'Open SQL Schema Starters tool page'
     },
     secondaryAction: {
-      label: 'See roadmap',
-      href: '#components',
-      ariaLabel: 'View SQL schema roadmap context'
+      label: 'View install',
+      href: '#install',
+      ariaLabel: 'View SQL schema install section'
     }
   }
 ] as const satisfies readonly DeveloperTool[];
