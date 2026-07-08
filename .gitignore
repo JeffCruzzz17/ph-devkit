@@ -15,3 +15,6 @@ vendor/
 # Test/debug output
 vitest-output.txt
 *-test-output.txt
+
+# Local launch/export assets
+launch-assets/
