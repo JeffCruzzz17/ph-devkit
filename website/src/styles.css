@@ -2,8 +2,6 @@
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #0f1f17;
   background:
-    radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), transparent 32rem),
-    radial-gradient(circle at top right, rgba(2, 132, 199, 0.12), transparent 28rem),
     #f6faf6;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -184,7 +182,6 @@ main {
   flex-direction: column;
   border-radius: 36px;
   background:
-    linear-gradient(160deg, rgba(16, 32, 22, 0.96), rgba(22, 101, 52, 0.92)),
     var(--surface-strong);
   color: #ffffff;
   padding: 28px;
@@ -784,7 +781,6 @@ select:focus {
   border: 1px solid rgba(15, 66, 39, 0.12);
   border-radius: 1.5rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 253, 250, 0.94)),
     rgba(255, 255, 255, 0.9);
   box-shadow: 0 22px 55px rgba(15, 66, 39, 0.08);
   padding: 1.25rem;
@@ -960,5 +956,307 @@ select:focus {
   .tool-action-primary,
   .tool-action-secondary {
     width: 100%;
+  }
+}
+/* PH DevKit tool detail page */
+
+.tool-detail-shell {
+  width: min(1040px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 4rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  color: #0f4227;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.tool-detail-hero {
+  border: 1px solid rgba(15, 66, 39, 0.14);
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(15, 66, 39, 0.055);
+  padding: clamp(1.35rem, 3vw, 2.1rem);
+}
+
+.tool-detail-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.tool-detail-hero h1 {
+  max-width: 680px;
+  margin: 0;
+  color: #082218;
+  font-size: clamp(2.6rem, 5.6vw, 4.25rem);
+  font-weight: 780;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.tool-detail-headline {
+  max-width: 760px;
+  margin: 0.75rem 0 0;
+  color: #0f4227;
+  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.tool-detail-hero > p:not(.tool-detail-headline) {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: #40534a;
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.tool-detail-hero .tool-stack {
+  margin-top: 1rem;
+}
+
+.tool-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.tool-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.tool-detail-panel {
+  border: 1px solid rgba(15, 66, 39, 0.14);
+  border-radius: 1.15rem;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 66, 39, 0.045);
+  padding: clamp(1.1rem, 2.4vw, 1.45rem);
+}
+
+.tool-detail-panel h2 {
+  margin: 0 0 0.8rem;
+  color: #082218;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 760;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.check-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  color: #40534a;
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.55;
+  padding-left: 1rem;
+}
+
+.check-list li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: #16a34a;
+  content: "";
+}
+
+.tool-detail-code-section {
+  margin-top: 1.35rem;
+}
+
+.tool-detail-code-section .section-header.compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 0.9rem;
+}
+
+.tool-detail-code-section .section-header.compact h2 {
+  max-width: 640px;
+  margin: 0;
+  color: #082218;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  font-weight: 760;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.tool-detail-code-section .section-header.compact p {
+  max-width: 420px;
+  margin: 0;
+  color: #52645b;
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.code-example-stack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.code-example-card {
+  overflow: hidden;
+  border: 1px solid rgba(15, 66, 39, 0.14);
+  border-radius: 1.15rem;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 66, 39, 0.045);
+}
+
+.code-example-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(15, 66, 39, 0.1);
+  padding: 0.85rem 1rem;
+}
+
+.code-example-header h3 {
+  margin: 0;
+  color: #082218;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.code-example-header span {
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #04783f;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.code-example-card pre {
+  margin: 0;
+  overflow-x: auto;
+  background: #102016;
+  padding: 1rem;
+}
+
+.code-example-card code {
+  color: #eafff1;
+  font-family: var(--font-mono, "Cascadia Code", "SFMono-Regular", Consolas, monospace);
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.related-tools {
+  margin-top: 1.35rem;
+}
+
+.related-tools .section-header.compact {
+  margin-bottom: 0.85rem;
+}
+
+.related-tools h2 {
+  margin: 0;
+  color: #082218;
+  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+  font-weight: 760;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.related-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.related-tool-card {
+  display: grid;
+  min-height: 112px;
+  align-content: start;
+  gap: 0.5rem;
+  border: 1px solid rgba(15, 66, 39, 0.14);
+  border-radius: 1.15rem;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 66, 39, 0.045);
+  color: inherit;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.related-tool-card:hover {
+  border-color: rgba(22, 163, 74, 0.34);
+  transform: translateY(-1px);
+}
+
+.related-tool-card span {
+  color: #04783f;
+  font-size: 0.68rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.related-tool-card strong {
+  color: #082218;
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.related-tool-card small {
+  justify-self: start;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #04783f;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+@media (max-width: 860px) {
+  .tool-detail-shell {
+    width: min(100% - 1rem, 1040px);
+    padding-top: 1rem;
+  }
+
+  .tool-detail-hero h1 {
+    font-size: clamp(2.35rem, 12vw, 3.75rem);
+  }
+
+  .tool-detail-grid,
+  .tool-detail-code-section .section-header.compact,
+  .related-tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-detail-code-section .section-header.compact p {
+    max-width: none;
   }
 }

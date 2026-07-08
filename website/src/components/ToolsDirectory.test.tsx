@@ -28,24 +28,44 @@ describe('ToolsDirectory', () => {
     }
   });
 
-  it('renders accessible primary actions for core MVP tools', () => {
+  it('renders accessible primary actions for core MVP tool pages', () => {
     render(<ToolsDirectory />);
 
     const pesoLink = screen.getByRole('link', {
-      name: 'Open Peso Formatter tool'
+      name: 'Open Peso Formatter tool page'
     }) as HTMLAnchorElement;
 
     const mobileLink = screen.getByRole('link', {
-      name: 'Open PH Mobile Validator tool'
+      name: 'Open PH Mobile Validator tool page'
     }) as HTMLAnchorElement;
 
     const addressLink = screen.getByRole('link', {
-      name: 'Open PH Address Selector tool'
+      name: 'Open PH Address Selector tool page'
     }) as HTMLAnchorElement;
 
-    expect(pesoLink.getAttribute('href')).toBe('#playground');
-    expect(mobileLink.getAttribute('href')).toBe('#playground');
-    expect(addressLink.getAttribute('href')).toBe('#playground');
+    expect(pesoLink.getAttribute('href')).toBe('/tools/peso-formatter');
+    expect(mobileLink.getAttribute('href')).toBe('/tools/ph-mobile-validator');
+    expect(addressLink.getAttribute('href')).toBe('/tools/ph-address-selector');
+  });
+
+  it('renders playground secondary actions for core MVP tools', () => {
+    render(<ToolsDirectory />);
+
+    const pesoDemoLink = screen.getByRole('link', {
+      name: 'Try Peso Formatter in the playground'
+    }) as HTMLAnchorElement;
+
+    const mobileDemoLink = screen.getByRole('link', {
+      name: 'Try PH Mobile Validator in the playground'
+    }) as HTMLAnchorElement;
+
+    const addressDemoLink = screen.getByRole('link', {
+      name: 'Try PH Address Selector in the playground'
+    }) as HTMLAnchorElement;
+
+    expect(pesoDemoLink.getAttribute('href')).toBe('#playground');
+    expect(mobileDemoLink.getAttribute('href')).toBe('#playground');
+    expect(addressDemoLink.getAttribute('href')).toBe('#playground');
   });
 
   it('groups stack tags inside each tool card', () => {
