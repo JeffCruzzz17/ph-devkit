@@ -1289,3 +1289,10 @@ select:focus {
   border-color: rgba(22, 163, 74, 0.35);
   background: #f0fdf4;
 }
+
+.demo-note {
+  margin: 0.75rem 0 0;
+  color: #52645b;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}

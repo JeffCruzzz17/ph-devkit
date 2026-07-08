@@ -93,7 +93,8 @@ export const toolDetails = [
     implementationNotes: [
       'Uses a controlled value API so parent forms own the selected address.',
       'Resets lower-level fields when a parent field changes.',
-      'Ships with sample PSGC-style data for demos; replace with a verified dataset for production.'
+      'Ships with sample PSGC-style data for demos; replace with a verified dataset for production.',
+      'Uses sample demo address data; verify datasets before production use.'
     ],
     codeExamples: [
       {
