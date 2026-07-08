@@ -40,9 +40,9 @@ const stackItems = [
 ] as const;
 
 const playgroundNotes = [
-  "Uses sample PSGC-like demo data only.",
-  "Keeps copied code small and readable.",
-  "Designed for App Builders PH launch feedback.",
+  "Keeps examples small, readable, and easy to adapt.",
+  "Includes practical utilities for forms, billing, onboarding, and admin tools.",
+  "Designed for Filipino developers building Philippine-market web apps.",
 ] as const;
 
 const starterCode = `import { formatPeso, validatePHMobile } from '@ph-devkit/core';
@@ -275,6 +275,11 @@ export function App() {
                 onChange={setAddress}
               />
 
+              <p className="demo-note">
+                Note: The address selector uses sample demo data. For production apps, verify and
+                update address datasets based on your project requirements.
+              </p>
+
               <div className="selection-preview" aria-live="polite">
                 <span className="preview-label">Selected address</span>
                 {selectedAddressPath.length > 0 ? (
@@ -372,7 +377,8 @@ export function App() {
               </article>
 
               <aside className="playground-notes" aria-label="Playground notes">
-                <h3>Built for launch feedback</h3>
+                <h3>Built for local-ready app workflows
+</h3>
                 <ul>
                   {playgroundNotes.map((note) => (
                     <li key={note}>{note}</li>
@@ -411,3 +417,4 @@ ${starterCode}`}</code>
     </>
   );
 }
+
