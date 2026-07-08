@@ -2,6 +2,7 @@ import { useMemo, useState, type ChangeEvent } from 'react';
 import { formatPeso, validatePHMobile } from '@ph-devkit/core';
 import { PHAddressSelector, type PHAddressValue } from '@ph-devkit/react';
 import { sampleRegions } from './data/sampleAddressData';
+import { ToolsDirectory } from './components/ToolsDirectory';
 
 const toolkitStats = [
   { label: 'MVP utilities', value: '3' },
@@ -126,6 +127,7 @@ export function App() {
 
         <nav className="site-nav" aria-label="Primary navigation">
           <a href="#components">Components</a>
+          <a href="#tools">Tools</a>
           <a href="#playground">Playground</a>
           <a href="#install">Install</a>
         </nav>
@@ -193,6 +195,10 @@ export function App() {
             ))}
           </div>
         </section>
+
+        <ToolsDirectory />
+
+        
 
         <section id="playground" className="section-block playground" aria-labelledby="playground-title">
           <div className="section-header">
@@ -332,3 +338,4 @@ ${starterCode}`}</code></pre>
     </>
   );
 }
+
